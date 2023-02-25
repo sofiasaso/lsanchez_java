@@ -2,44 +2,30 @@ package Login;
 
 import java.util.Scanner;
 
-import javax.swing.JOptionPane;
-
 public class Login {
     public static void main(String[] args) throws Exception{
+
+        System.out.println("Bienvenido a Login <3, primero debo revisar tus datos");
+
+        String validUser = "admin";
+        String validPassword = "1234";
+
         Scanner Login = new Scanner(System.in);
-        String U = "admin";
-        String P = "1234";
-        boolean encontrado = false; // Variable para seguir ejecutando el bucle hasta que el usuario introduzca los datos correctos
+        System.out.print("Ingresa tu usuario, por favor: ");
+        String user = Login.nextLine();
 
-        JOptionPane.showMessageDialog(null, "Bienvenido al Sistema \n"
-                + "Primero debemos verificar sus datos.");
+        System.out.print("Ingresa tu contraseña, por favor: ");
+        String password = Login.nextLine();
 
-        // Inicializar variables, pero solicitar la entrada del usuario en el bucle.
-        String user = "";
-        String pass = "";
-
-        while(!encontrado){ // Ejecutar el bucle hasta que el usuario introduzca los datos correctos
-            // Pedir aquí los datos al usuario para solicitar de nuevo si falla.
-            user = JOptionPane.showInputDialog("Ingrese el Usuario: ");
-            pass = JOptionPane.showInputDialog("Ingrese la contraseña: ");
-
-            if(U.equals(user)){
-                if(P.equals(pass)){
-                    JOptionPane.showMessageDialog(null, "Bienvenido ");
-                    encontrado = true; // Se abandona el bucle
-
-                }else{
-                    JOptionPane.showMessageDialog(null,
-                            "Contraseña Incorrecta", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            }else{
-                JOptionPane.showMessageDialog(null,
-                        "El usuario es invalido!", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+        if (user.equals(validUser) && password.equals(validPassword)) {
+            System.out.println("Bienvenido al sistema");
+        } else if (user.equals(validUser) && !password.equals(validPassword)) {
+            System.out.println("Parece que has olvidado tu contraseña");
+        } else if (!user.equals(validUser) && password.equals(validPassword)) {
+            System.out.println("Revisa por favor tus credenciales");
+        } else {
+            System.out.println("ACCESO DENEGADO!");
         }
         Login.close();
     }
 }
-
-
-    
