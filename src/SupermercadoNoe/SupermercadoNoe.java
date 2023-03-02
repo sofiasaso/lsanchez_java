@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class SupermercadoNoe {
     public static void main(String[] args) {
         Scanner SupermercadoNoe = new Scanner(System.in);
-
         System.out.println("Digita tu nombre antes de empezar, por favor");
         String name;
         name = SupermercadoNoe.nextLine();
@@ -15,11 +14,19 @@ public class SupermercadoNoe {
         System.out.println("Por ello, te vamos a obsequiar un descuento en el valor de tu compra");
         System.out.println("Sólo si esta es mayor a $ 50.000 y dependiendo de tu suerte");
         System.out.println("Buena suerte " + name);
-        System.out.println("\nAhora, digita el total de tu compra por favor: ");
-        double compra;
-        compra = SupermercadoNoe.nextInt();
-        
+        int compra, precioU, registrar=1, cantidad, valorPagado, cambio, acumulador=0;
 
+        while (registrar==1) {
+            System.out.println("\nDigita el precio del producto");
+            precioU = SupermercadoNoe.nextInt();
+            System.out.println("Digita la cantidad de los productos");
+            cantidad = SupermercadoNoe.nextInt();
+            System.out.println("Deseas ingresar más productos? Digita 1) Si o 2) No ");
+            registrar = SupermercadoNoe.nextInt();
+            compra = precioU * cantidad;
+            acumulador = acumulador + compra;
+        }      
+        
         if (compra<50000) {
            System.out.println("Gracias por tu compra!");
            System.out.println("Esperamos verte nuevamente :)");
@@ -38,8 +45,12 @@ public class SupermercadoNoe {
                 case "red":
                     System.out.println("Obtuviste la pelota de color rojo...");
                     System.out.println("Vas a obtener un 10% de descuento en el total de tu compra");
-                    compra = compra - (compra * 0.1); 
+                    compra = compra - (compra * 10)/100; 
                     System.out.println("El total de tu compra es de " + compra);
+                    System.out.println("Digita el precio del dinero a pagar ");
+                    valorPagado = SupermercadoNoe.nextInt();
+                    cambio = compra - valorPagado;
+                    System.out.println("Tu cambio es de " + cambio);
                     break;
                     
                 case "blue":
@@ -48,6 +59,9 @@ public class SupermercadoNoe {
                     compra = compra - (compra * 30)/100;
                     System.out.println("El total de tu compra es de " + compra);
                     System.out.println("Ahora por favor ingresa el valor a pagar");
+                    valorPagado = SupermercadoNoe.nextInt();
+                    cambio = compra - valorPagado;
+                    System.out.println("Tu cambio es de " + cambio);
                     break;
 
                 case "yellow":
@@ -56,6 +70,9 @@ public class SupermercadoNoe {
                     compra = compra - (compra * 50)/100;
                     System.out.println("El total de tu compra es de " + compra);
                     System.out.println("Ahora por favor ingresa el valor a pagar");
+                    valorPagado = SupermercadoNoe.nextInt();
+                    cambio = compra - valorPagado;
+                    System.out.println("Tu cambio es de " + cambio);
                     break;
 
                 case "white":
